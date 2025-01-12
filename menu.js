@@ -1,5 +1,6 @@
 
 import * as States from './states.js';
+import * as Parks from "./nationalparks.js";
 
 export const navigationLinks = [
     {text: 'Home', href: '#'},
@@ -35,12 +36,24 @@ export const navigationLinks = [
         return navBarMenu;
     }
 
-    export function handleLinkNavClick(text)
+    export async function handleLinkNavClick(text)
     {
-       const PageContainer = document.querySelector(".PageContainer");
-       document.body.style.backgroundColor = 'lightblue';
-       PageContainer.innerHTML += `<h1>${text}</h1>`;
+        if(text == 'Parks'){
+            let stateSelector = document.querySelector(".stateSelector");
+            stateSelector.value = 'NC';
+            const changeEvent = new Event("change", { bubbles: true });
+            stateSelector.dispatchEvent(changeEvent);
+           }
+            else if(text == 'Contact us'){
+                getPageContents();   
+                 console.log('Contact us form');
+            }
+            else{
+                getPageContents();
+                console.log('Home page');
+            }
     }
+
 
     export function appendElementToParent(parent,child)
     {
@@ -50,9 +63,10 @@ export const navigationLinks = [
     export function getBannerContainer(){              
         const imageBannerContainer = document.createElement("div");
         imageBannerContainer.setAttribute('id','imageBannerContainer');
-
-        // const bannerImage = document.createElement("img");
-        // bannerImage.setAttribute('id','bannerImage');
-        // imageBannerContainer.appendChild(bannerImage);
         return imageBannerContainer;
+    }
+
+    function getPageContents(){
+       const PageContainer = document.getElementById("parks-list");
+       PageContainer.innerHTML = "";
     }

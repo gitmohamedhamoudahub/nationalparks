@@ -55,12 +55,12 @@ export async function fetchAndRenderFishingParks(stateCode = 'NC') {
     axiosInit();
     const parksListDiv =  document.createElement("div");
     parksListDiv.setAttribute('id',"parks-list");
-
-    console.log(parksListDiv);
+    parksListDiv.innerHTML = '';
+    console.log(parksListDiv);  
     const allParks = [];
-    const limit = 1; // Maximum results per request
-    let start = 0;    // Initial starting point
-    let total = 0;    // Total parks counter
+    const limit = 3;    
+    let start = 0;      
+    let total = 0;    
 
     try {
         do {
@@ -73,8 +73,8 @@ export async function fetchAndRenderFishingParks(stateCode = 'NC') {
             //   start: start
             }
           });
-  
-          const parks = await response.data.data;
+          
+          const parks = await response  .data.data;
           total = response.data.total; // Total parks available
           allParks.push(...parks);     // Append parks to the list
   
@@ -176,8 +176,8 @@ export async function fetchAndRenderFishingParks(stateCode = 'NC') {
             parkDiv.appendChild(feesSection);
   
   
-          // Append the park div to the main container
-          parksListDiv.appendChild(parkDiv);
+            parksListDiv.innerHTML = '';
+            parksListDiv.appendChild(parkDiv);
         });
       } catch (error) {
         console.error('Error fetching parks in NC:', error);

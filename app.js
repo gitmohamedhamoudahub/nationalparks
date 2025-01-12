@@ -7,28 +7,30 @@ let MenuContainer = navBar.getMenuLinks();
 let BannerContainer = navBar.getBannerContainer();
 PageContainer.appendChild(BannerContainer);
 let stateSelector = document.querySelector(".stateSelector");
-let returnData = document.createElement("div");
-// const parksList = document.createElement("div");
-//PageContainer.appendChild(parksList);
+
 
 
 
     stateSelector.addEventListener("change", async () => {
+
         const selectedValue = stateSelector.value;
         console.log("Selected state code:", selectedValue);
         // console.log("the list" + parksList);
         const parksList =  await  getParksElements(selectedValue);
-        // console.log(parksList);
-        const parks = document.createElement("div");
-        parks.setAttribute('id',"parks-list");
-        parks.innerHTML = parksList;
-        PageContainer.appendChild(parks);
+        let ParksListDiv = document.getElementById("parks-list");
+        if(!ParksListDiv){
+            ParksListDiv = document.createElement("div");
+            ParksListDiv.setAttribute('id',"parks-list");
+        }
+        ParksListDiv.innerHTML = '';
+        ParksListDiv.innerHTML = parksList;
+        PageContainer.appendChild(ParksListDiv);
         
         
     });
 
  async  function getParksElements(selectedValue){
-   
+    let returnData = document.createElement("div");
     returnData = await  Parks.fetchAndRenderFishingParks(selectedValue);   
     return returnData;
     
