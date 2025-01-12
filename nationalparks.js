@@ -12,7 +12,7 @@ export async function axiosInit(){
     request.metadata = request.metadata || {};
     request.metadata.startTime = new Date().getTime();
     document.body.style.cursor = 'progress';
-    progressBar.style.width = '0%';
+    progressBar.style.width = '100%';
     return request;
 });
 
@@ -25,7 +25,7 @@ axios.interceptors.response.use(
         console.log(`Request end time ${response.config.metadata.endTime}`);
         console.log(`Request took ${response.config.metadata.durationInMS} milliseconds.`);
         document.body.style.cursor = 'default';
-        progressBar.style.width = '100%';
+        progressBar.style.width = '0%';
         return response;
     },
     (error) => {

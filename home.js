@@ -1,9 +1,9 @@
 export function getHomePage(){
-    const homeText = `<p>
+    const homeText = `<br><div class='logo'><img src="https://www.nps.gov/theme/assets/dist/images/branding/logo.png"><div>` + `<p>
     Since 1916, the National Park Service has been entrusted with the care of our national parks. With the help of volunteers and partners, we safeguard these special places and share their stories with more than 318 million visitors every year. But our work doesn't stop there.
     We are proud that tribes, local governments, nonprofit organizations, businesses, and individual citizens ask for our help in revitalizing their communities, preserving local history, celebrating local heritage, and creating close-to-home opportunities for kids and families to get outside, be active, and have fun.  
     Taking care of the national parks and helping Americans take care of their communities is a job we love, and we need—and welcome—your help and support.
-    <p>`
+    <p><br>`
     +
     `<div class="Component ArticleTextGroup TextWrapped clearfix">
 <h2>Our Mission<a name="onthisPage-0" class="onThisPageAnchor"></a></h2>
@@ -31,7 +31,7 @@ export function getHomePage(){
 <li><a href="/aboutus/national-park-system.htm" id="CP___PAGEID=5763059,national-park-system.htm,30102|">National Park System units and related areas</a></li>
 <li><a href="/aboutus/contactinformation.htm" id="CP___PAGEID=4871488,/aboutus/contactinformation.htm,30102|">Contact information for the Washington office, regional offices, and parks</a></li>
 </ul>
-</div>`
+</div><br>`
 
     return homeText
 }

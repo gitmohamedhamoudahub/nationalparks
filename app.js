@@ -1,5 +1,6 @@
 import * as navBar from "./menu.js";
 import * as Parks from "./nationalparks.js";
+import * as HomePage from "./home.js";
 
 // import * as states from "./states.js";
 export let PageContainer = document.querySelector(".PageContainer");
@@ -14,7 +15,7 @@ progressbar.style = "transition: width 1s ease";
 PageContainer.appendChild(progressbar);
 
 let stateSelector = document.querySelector(".stateSelector");
-
+navBar.getPageContents(HomePage.getHomePage());
 
 
 

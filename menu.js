@@ -36,6 +36,8 @@ export const navigationLinks = [
         return navBarMenu;
     }
 
+    
+
     export async function handleLinkNavClick(text)
     {
         if(text == 'Parks'){
@@ -64,9 +66,6 @@ export const navigationLinks = [
     export function getBannerContainer(){              
         const imageBannerContainer = document.createElement("div");
         imageBannerContainer.setAttribute('id','imageBannerContainer');
-
-        
-        
         return imageBannerContainer;
     }
 
