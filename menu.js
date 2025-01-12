@@ -2,6 +2,7 @@
 import * as States from './states.js';
 import * as Parks from "./nationalparks.js";
 import * as HomePage from "./home.js";
+import * as ContactUsPage from "./contactus.js";
 export const navigationLinks = [
     {text: 'Home', href: '#'},
     {text: 'Parks', href: '#'} ,
@@ -47,7 +48,7 @@ export const navigationLinks = [
             stateSelector.dispatchEvent(changeEvent);
            }
             else if(text == 'Contact us'){
-                 getPageContents('Contact us form');   
+                 getPageContents(ContactUsPage.getContactUsPage());   
                   console.log('Contact us form');
             }
             else{
