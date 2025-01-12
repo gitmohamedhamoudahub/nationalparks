@@ -1,0 +1,54 @@
+*{
+    margin: 0px;
+    padding: 0%;
+}
+.PageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-content: center; */
+    width: 100%;
+    height: auto;
+    margin: 0%;
+}
+
+#imageBannerContainer{
+    background-image: url("https://www.nps.gov/common/uploads/portal_banner/nri/homepage/DBC7B862-99A2-5DFA-8DE47C3582A83756.jpg?mode=crop&quality=90&width=1024&height=300");
+    contain: cover;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 300px;
+    width:auto;
+}
+#navBarMenu{
+    width: 100%;
+    display: flex;
+    background-color: brown !important;
+    height: 25px;   
+    padding: 5px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    padding-top: 10px;
+
+}
+#btnMenu{
+    border  : 0px solid #bababa;
+    margin-right: 25px;
+    background-color:transparent !important;
+    font-size: 14px;
+    font-weight: bolder;
+    color:white;
+}
+#btnMenu:hover{
+    cursor: pointer !important;
+    color: gold !important;
+}
+
+.stateSelector{
+    height: 25px;
+    width: 300px;
+    margin-left: 700px;
+    
+
+}
