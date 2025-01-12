@@ -17,18 +17,19 @@ let returnData = document.createElement("div");
         const selectedValue = stateSelector.value;
         console.log("Selected state code:", selectedValue);
         // console.log("the list" + parksList);
-        const parksList =  await  getParksElements();
+        const parksList =  await  getParksElements(selectedValue);
         // console.log(parksList);
         const parks = document.createElement("div");
+        parks.setAttribute('id',"parks-list");
         parks.innerHTML = parksList;
         PageContainer.appendChild(parks);
         
         
     });
 
- async  function getParksElements(){
+ async  function getParksElements(selectedValue){
    
-    returnData = await  Parks.fetchAndRenderFishingParks();   
+    returnData = await  Parks.fetchAndRenderFishingParks(selectedValue);   
     return returnData;
     
 }

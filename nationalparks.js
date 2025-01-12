@@ -51,14 +51,14 @@ axiosInit();
 // getActivities();
 //getParks();
 //**************************************************** */
-export async function fetchAndRenderFishingParks() {
+export async function fetchAndRenderFishingParks(stateCode = 'NC') {
     axiosInit();
     const parksListDiv =  document.createElement("div");
     parksListDiv.setAttribute('id',"parks-list");
 
     console.log(parksListDiv);
     const allParks = [];
-    const limit = 50; // Maximum results per request
+    const limit = 1; // Maximum results per request
     let start = 0;    // Initial starting point
     let total = 0;    // Total parks counter
 
@@ -68,10 +68,9 @@ export async function fetchAndRenderFishingParks() {
           const response = await axios.get('/parks', {
             params: {
               api_key: API_KEY,
-              // activities: 'fishing',
-              limit: limit,
-              stateCode: 'NY',
-              start: start
+               limit: limit,
+              stateCode: stateCode,
+            //   start: start
             }
           });
   
@@ -165,10 +164,10 @@ export async function fetchAndRenderFishingParks() {
                 feesList.appendChild(feeItem);
               });
             } else {
-              parkDiv.style.backgroundColor = 'lightcyan';
+            //   parkDiv.style.backgroundColor = 'lightcyan';
               const noFeeItem = document.createElement('li');
               noFeeItem.style.color = 'red';
-              noFeeItem.style.backgroundColor = 'lemonchiffon';
+            //   noFeeItem.style.backgroundColor = 'lemonchiffon';
               noFeeItem.textContent = 'No entrance fees.';
               feesList.appendChild(noFeeItem);
             }
