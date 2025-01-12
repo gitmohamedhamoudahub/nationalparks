@@ -53,7 +53,10 @@ axiosInit();
 //**************************************************** */
 export async function fetchAndRenderFishingParks() {
     axiosInit();
-    const parksListDiv = document.getElementById('parks-list');
+    const parksListDiv =  document.createElement("div");
+    parksListDiv.setAttribute('id',"parks-list");
+
+    console.log(parksListDiv);
     const allParks = [];
     const limit = 50; // Maximum results per request
     let start = 0;    // Initial starting point
@@ -74,8 +77,9 @@ export async function fetchAndRenderFishingParks() {
 
         const parks = response.data.data;
         total = response.data.total; // Total parks available
+        console.log('Total Parks => ' + total);
         allParks.push(...parks);     // Append parks to the list
-
+        // console.log(allParks);
         start += limit; // Increment start for the next page
       } while (allParks.length < total);
       allParks.forEach(park => {
@@ -98,9 +102,9 @@ export async function fetchAndRenderFishingParks() {
         parkDescription.textContent = park.description || 'No description available.';
         parkDataTxt.appendChild(parkDescription);
 
-        // Address (if available)
+        
         if (park.addresses && park.addresses.length > 0) {
-          const address = park.addresses[0]; // Use the first address
+          const address = park.addresses[0]; // first address
           const addressText = document.createElement('p');
           addressText.textContent = `Address: ${address.line1}, ${address.city}, ${address.stateCode} ${address.postalCode}`;
           parkDataTxt.appendChild(addressText);
@@ -108,7 +112,7 @@ export async function fetchAndRenderFishingParks() {
             parkData.appendChild(parkDataTxt);
 
 
-        // Add up to 3 images
+        
         if (park.images && park.images.length > 0) {
           const imageContainer = document.createElement('div');
           imageContainer.classList.add('imageContainer');
@@ -172,18 +176,21 @@ export async function fetchAndRenderFishingParks() {
 
           feesSection.appendChild(feesList);
           parkDiv.appendChild(feesSection);
-
+          console.log(parkDiv);
 
         // Append the park div to the main container
         parksListDiv.appendChild(parkDiv);
       });
     } catch (error) {
-      console.error('Error fetching parks in NC:', error);
+      console.error('Error fetching parks:', error);
 
       // Display an error message
       parksListDiv.innerHTML = '<p>Unable to load parks. Please try again later.</p>';
     }
+    finally{
+        return parksListDiv;
+    };
   }
 
   
-  fetchAndRenderFishingParks();
+//   fetchAndRenderFishingParks();
