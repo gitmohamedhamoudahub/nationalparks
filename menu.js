@@ -3,10 +3,11 @@ import * as States from './states.js';
 import * as Parks from "./nationalparks.js";
 import * as HomePage from "./home.js";
 import * as ContactUsPage from "./contactus.js";
+
 export const navigationLinks = [
     {text: 'Home', href: '#'},
     {text: 'Parks', href: '#'} ,
-    {text: 'Contact us', href: '#'}
+    {text: 'Contact us', href: './contactus.html'}
 
     ]
 
@@ -48,7 +49,9 @@ export const navigationLinks = [
             stateSelector.dispatchEvent(changeEvent);
            }
             else if(text == 'Contact us'){
-                 getPageContents(ContactUsPage.getContactUsPage());   
+               ;
+                // console.log(ContactUsPage.contactUsData);
+                getPageContents(ContactUsPage.getContactUsPage());   
                   console.log('Contact us form');
             }
             else{
@@ -71,9 +74,10 @@ export const navigationLinks = [
     }
 
     export function getPageContents(text){
+        // console.log(text);
         let PageContainer = document.querySelector(".PageContainer");
-        console.log('=> ' + PageContainer); 
-        console.log(text);
+        // console.log('=> ' + PageContainer); 
+        // console.log(text);
         let parksListDiv = document.getElementById("parks-list");  
         // console.log( parksListDiv);
         

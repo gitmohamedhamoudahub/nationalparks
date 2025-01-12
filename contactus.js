@@ -1,23 +1,39 @@
+// export let  contactUsData = '';
+
 export function getContactUsPage() {
-    const formContainer = document.createElement('div');
+
+  console.log('get contact us page');
+  const formContainer = document.createElement('div');
   formContainer.className = 'contactUsContainer';
-  const form = document.createElement('form');
-  form.className = 'contactUsForm';
+//   const form = document.createElement('form');
+//   form.className = 'contactUsForm';
   const nameInput = createInputField('Name', 'name');
   const emailInput = createInputField('Email', 'email', 'email');
   const messageInput = createInputField('Message', 'message', 'textarea');
   const submitButton = document.createElement('button');
-  submitButton.type = 'submit';
+  submitButton.type = 'button';
   submitButton.textContent = 'Submit';
   submitButton.className = 'btnSubmit';
-  form.appendChild(nameInput);
-  form.appendChild(emailInput);
-  form.appendChild(messageInput);
-  form.appendChild(submitButton);
+  formContainer.appendChild(nameInput);
+  formContainer.appendChild(emailInput);
+  formContainer.appendChild(messageInput);
+  formContainer.appendChild(submitButton);
+    // Create a container to display submitted data
+    const submittedDataContainer = document.createElement('div');
+    submittedDataContainer.className = 'submittedDataContainer';
+    submittedDataContainer.innerHTML = '<h3>Submitted Data:</h3>';
+  
 
+//   formContainer.appendChild(form);
+  formContainer.appendChild(submittedDataContainer);
 
-    return form.innerHTML;
+      console.log(formContainer.innerHTML);
+    return formContainer.innerHTML;
 }
+
+
+
+
 
 function createInputField(labelText, name, type = 'text') {
     const fieldContainer = document.createElement('div');
