@@ -11,17 +11,24 @@ let stateSelector = document.querySelector(".stateSelector");
 //PageContainer.appendChild(parksList);
 
 
-if (stateSelector) {
+
     stateSelector.addEventListener("change", () => {
         const selectedValue = stateSelector.value;
         console.log("Selected state code:", selectedValue);
-        const parksList = Parks.fetchAndRenderFishingParks();
-        console.log(parksList);
-        // PageContainer.appendChild(parksList);
+        // console.log("the list" + parksList);
+        const parksList = getParksElements();
+        PageContainer.appendChild(parksList);
         
         
         
     });
+
+async function getParksElements(){
+    const returnData = document.createElement("div");
+    returnData = await Parks.fetchAndRenderFishingParks(); 
+    console.log(returnData);
+    return returnData;
+    
 }
 
 

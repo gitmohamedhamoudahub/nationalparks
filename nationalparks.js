@@ -176,20 +176,20 @@ export async function fetchAndRenderFishingParks() {
 
           feesSection.appendChild(feesList);
           parkDiv.appendChild(feesSection);
-          console.log(parkDiv);
+        //   console.log(parkDiv);
 
         // Append the park div to the main container
         parksListDiv.appendChild(parkDiv);
       });
+        
     } catch (error) {
       console.error('Error fetching parks:', error);
 
       // Display an error message
       parksListDiv.innerHTML = '<p>Unable to load parks. Please try again later.</p>';
     }
-    finally{
+    console.log(parksListDiv);
         return parksListDiv;
-    };
   }
 
   
