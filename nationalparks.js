@@ -5,6 +5,37 @@ export async function axiosInit(){
     axios.defaults.baseURL = API_BASE_URL;
     axios.defaults.headers.common['x-api-key'] = `${API_KEY}`;
     axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+    
+//Logging request Time
+  axios.interceptors.request.use(request => {
+    request.metadata = request.metadata || {};
+    request.metadata.startTime = new Date().getTime();
+    document.body.style.cursor = 'progress';
+    progressBar.style.width = '0%';
+    return request;
+});
+
+axios.interceptors.response.use(
+    (response) => {
+        response.config.metadata.endTime = new Date().getTime();
+        response.config.metadata.durationInMS = response.config.metadata.endTime - response.config.metadata.startTime;
+
+        console.log(`Request start time ${response.config.metadata.startTime}`);
+        console.log(`Request end time ${response.config.metadata.endTime}`);
+        console.log(`Request took ${response.config.metadata.durationInMS} milliseconds.`);
+        document.body.style.cursor = 'default';
+        progressBar.style.width = '100%';
+        return response;
+    },
+    (error) => {
+        error.config.metadata.endTime = new Date().getTime();
+        error.config.metadata.durationInMS = error.config.metadata.endTime - error.config.metadata.startTime;
+
+        console.log(`Request took ${error.config.metadata.durationInMS} milliseconds.`)
+        // progressBar.style.width = '100%'; 
+        throw error;
+});
 }
 
 async function getParks()
@@ -17,7 +48,8 @@ async function getParks()
                     // city: 'Asheville',
                    stateCode: 'NY'
                 }
-              }
+              },
+              {onDownloadProgress: updateProgress},
         );
         const data = res.data;
         console.log(data);
@@ -29,6 +61,14 @@ async function getParks()
     return [];
    }
 }
+function updateProgress(event) {
+    console.log(event); 
+    if (event.lengthComputable) {
+        const percentCompleted = (event.loaded / event.total) * 100;
+        console.log(`Percent Completed: ${percentCompleted}`);
+        progressBar.style.width = `${percentCompleted}%`;
+    }
+  }
 
 async function getActivities()
 {
@@ -74,7 +114,7 @@ export async function fetchAndRenderFishingParks(stateCode = 'NC') {
             }
           });
           
-          const parks = await response  .data.data;
+          const parks = await response.data.data;
           total = response.data.total; // Total parks available
           allParks.push(...parks);     // Append parks to the list
   

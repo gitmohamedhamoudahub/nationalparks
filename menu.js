@@ -1,7 +1,7 @@
 
 import * as States from './states.js';
 import * as Parks from "./nationalparks.js";
-
+import * as HomePage from "./home.js";
 export const navigationLinks = [
     {text: 'Home', href: '#'},
     {text: 'Parks', href: '#'} ,
@@ -45,11 +45,12 @@ export const navigationLinks = [
             stateSelector.dispatchEvent(changeEvent);
            }
             else if(text == 'Contact us'){
-                getPageContents();   
-                 console.log('Contact us form');
+                 getPageContents('Contact us form');   
+                  console.log('Contact us form');
             }
             else{
-                getPageContents();
+
+                getPageContents(HomePage.getHomePage());
                 console.log('Home page');
             }
     }
@@ -63,10 +64,26 @@ export const navigationLinks = [
     export function getBannerContainer(){              
         const imageBannerContainer = document.createElement("div");
         imageBannerContainer.setAttribute('id','imageBannerContainer');
+
+        
+        
         return imageBannerContainer;
     }
 
-    function getPageContents(){
-       const PageContainer = document.getElementById("parks-list");
-       PageContainer.innerHTML = "";
+    export function getPageContents(text){
+        let PageContainer = document.querySelector(".PageContainer");
+        console.log('=> ' + PageContainer); 
+        console.log(text);
+        let parksListDiv = document.getElementById("parks-list");  
+        // console.log( parksListDiv);
+        
+        if(!parksListDiv){
+            parksListDiv = document.createElement("div");
+            parksListDiv.setAttribute('id',"parks-list");
+            parksListDiv.innerHTML = '';
+            PageContainer.appendChild(parksListDiv);
+        }
+          
+    //    let PageContainer =  document.getElementById("parks-list");
+        parksListDiv.innerHTML = `${text}`;
     }

@@ -1,11 +1,18 @@
 import * as navBar from "./menu.js";
 import * as Parks from "./nationalparks.js";
+
 // import * as states from "./states.js";
 export let PageContainer = document.querySelector(".PageContainer");
 let MenuContainer = navBar.getMenuLinks();
  PageContainer.appendChild(MenuContainer);
 let BannerContainer = navBar.getBannerContainer();
 PageContainer.appendChild(BannerContainer);
+const progressbar = document.createElement("div");
+progressbar.setAttribute("id","progressBar");
+progressbar.setAttribute("class","progress-bar-top");
+progressbar.style = "transition: width 1s ease";
+PageContainer.appendChild(progressbar);
+
 let stateSelector = document.querySelector(".stateSelector");
 
 
@@ -28,6 +35,7 @@ let stateSelector = document.querySelector(".stateSelector");
         
         
     });
+    
 
  async  function getParksElements(selectedValue){
     let returnData = document.createElement("div");
