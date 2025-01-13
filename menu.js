@@ -62,30 +62,37 @@ btnSubmit.addEventListener('click', async (event) => {
     event.preventDefault();
     console.log('Submiting');
     // event.preventDefault();
-    const nameInput   = document.querySelector("#name")
-    const emailInput   = document.querySelector("#email")
-    const messageInput   = document.querySelector("#message")
-    // console.log(nameInput);
-    const name = await nameInput.contentText;
-    const email = await emailInput.contentText;
-    const message = await messageInput.contentText;
-
+    const nameInput   = document.getElementById('name');
+    const emailInput   = document.getElementById('email');
+    const messageInput   = document.getElementById('message');
+    // console.log(nameInput.value + emailInput.value + messageInput.value); 
+    const name = nameInput.value;
+    const email = await emailInput.value;
+    const message = await messageInput.value;
+console.log(name, email, message);
 try {
-  const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
-    title: name + '-' + email,
+  const response = await axios.post('https://jsonplaceholder.typicode.com/posts', 
+  {
+    title: 'Name: ' +name + ' - Email: ' + email,
     body: message,
   });
-  console.log(response);
-  const submittedData = document.createElement('div');
-  submittedData.className = 'submitted-data';
-  submittedData.innerHTML = `
-    <p><strong>Name:</strong> ${response.data.name}</p>
-    <p><strong>Email:</strong> ${response.data.email}</p>
-    <p><strong>Message:</strong> ${response.data.message}</p>
-    <hr>
-  `;
-
-  submittedDataContainer.appendChild(submittedData);
+  console.log('response => ' + response.status);
+  if(response.status === 201 ){
+        console.log(response);
+        const submittedData = document.createElement('div');
+        submittedData.className = 'submitted-data';
+        submittedData.innerHTML = `
+            <p><strong>Name - Email:</strong> ${response.data.title}</p>
+            <p><strong>Message: </strong> ${response.data.body}</p>
+            
+            <hr>
+        `;
+        const submittedDataContainer = document.querySelector('.submittedDataContainer');
+        submittedDataContainer.appendChild(submittedData);
+    nameInput.value = '';
+    emailInput.value = '';
+    messageInput.value = '';
+    }
   } catch (error) {
   console.error('Error submitting the form:', error);
 }

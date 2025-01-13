@@ -4,8 +4,8 @@ export function getContactUsPage() {
 
   console.log('get contact us page');
   const headerTxt = document.createElement('H1');
-//   headerTxt.textContent = 'Contact Us';
-//   contactUsContainer.className = 'contactUsContainer';
+  headerTxt.textContent = 'Contact Us';
+  contactUsContainer.className = 'contactUsContainer';
   const formContainer = document.createElement('div');
   formContainer.className = 'contactUsContainer';
   const nameInput = createInputField('Name', 'name');
