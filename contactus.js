@@ -4,7 +4,7 @@ export function getContactUsPage() {
 
   console.log('get contact us page');
   const headerTxt = document.createElement('H1');
-  headerTxt.textContent = 'Contact Us';
+//   headerTxt.textContent = 'Contact Us';
 //   contactUsContainer.className = 'contactUsContainer';
   const formContainer = document.createElement('div');
   formContainer.className = 'contactUsContainer';
@@ -17,6 +17,7 @@ export function getContactUsPage() {
   submitButton.type = 'button';
   submitButton.textContent = 'Submit';
   submitButton.className = 'btnSubmit';
+
   submitFieldContainer.appendChild(submitButton);
   formContainer.appendChild(headerTxt);
   formContainer.appendChild(nameInput);

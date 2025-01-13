@@ -53,6 +53,46 @@ export const navigationLinks = [
                 // console.log(ContactUsPage.contactUsData);
                 getPageContents(ContactUsPage.getContactUsPage());   
                   console.log('Contact us form');
+                let btnSubmit = document.querySelector(".btnSubmit");
+                console.log('btnSubmit => ' + btnSubmit);
+
+
+
+btnSubmit.addEventListener('click', async (event) => {
+    event.preventDefault();
+    console.log('Submiting');
+    // event.preventDefault();
+    const nameInput   = document.querySelector("#name")
+    const emailInput   = document.querySelector("#email")
+    const messageInput   = document.querySelector("#message")
+    // console.log(nameInput);
+    const name = await nameInput.contentText;
+    const email = await emailInput.contentText;
+    const message = await messageInput.contentText;
+
+try {
+  const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+    title: name + '-' + email,
+    body: message,
+  });
+  console.log(response);
+  const submittedData = document.createElement('div');
+  submittedData.className = 'submitted-data';
+  submittedData.innerHTML = `
+    <p><strong>Name:</strong> ${response.data.name}</p>
+    <p><strong>Email:</strong> ${response.data.email}</p>
+    <p><strong>Message:</strong> ${response.data.message}</p>
+    <hr>
+  `;
+
+  submittedDataContainer.appendChild(submittedData);
+  } catch (error) {
+  console.error('Error submitting the form:', error);
+}
+
+});
+
+
             }
             else{
 
