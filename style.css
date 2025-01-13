@@ -187,16 +187,81 @@
     height: 15px;
     background-color: brown !important;
     border-bottom: 1px solid black;}
+    
     label{
         font-weight: bolder;
         margin: 50px;
     }
-    /* button{
-        padding-right: 15px;
-        padding-left: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        border: 1px solid black;
-        border-radius: 15px;
-        margin: 30px;
-    } */
+    
+     
+     .fieldContainername, .fieldContaineremail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:10px;
+        width: 40%;
+        height: 30px;
+        margin-left:100px;
+        background-color: oldlace ;
+        border-right: 1px solid brown;
+        border-left: 1px solid brown;
+     }
+     .fieldContainername{
+        border-top: 1px solid brown;
+        border-top-left-radius:20px;
+        border-top-right-radius:20px;
+     }
+     .fieldContainermessage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:10px;
+        width: 40%;
+        height: 100%;
+        margin-left:100px;
+        background-color: oldlace ;       
+        /* border: 1px solid black; */
+        border-right: 1px solid brown;
+        border-left: 1px solid brown;
+     }
+     h1{
+        margin-bottom: 40px;
+     }
+     .submitFieldContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:10px;
+        margin-left:100px;
+        width: 40%;
+        height: auto;
+        background-color: brown;
+        border-bottom-left-radius:20px;
+        border-bottom-right-radius:20px;
+        border-right: 1px solid brown;
+        border-left: 1px solid brown;
+        border-bottom: 1px solid black;
+     }
+     .submitFieldContainer button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        font-weight: bolder;
+        border: 0px ;
+        border-radius:10px;
+        padding:5px
+     }
+     .submitFieldContainer button:hover{
+        cursor: pointer !important;
+        color: green;
+     }
+      textarea{
+       height: 100px;
+        /* width: 100%; */
+        /* margin: 30px;        */
+         
+     }
+     .submittedDataContainer{
+        height: 100px;
+     }
