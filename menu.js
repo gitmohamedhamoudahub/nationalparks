@@ -73,7 +73,7 @@ console.log(name, email, message);
 try {
   const response = await axios.post('https://jsonplaceholder.typicode.com/posts', 
   {
-    title: 'Name: ' +name + ' - Email: ' + email,
+    title: '<strong>Name: </strong>' +name + ' <br> <strong>Email:</strong> ' + email,
     body: message,
   });
   console.log('response => ' + response.status);
@@ -82,8 +82,8 @@ try {
         const submittedData = document.createElement('div');
         submittedData.className = 'submitted-data';
         submittedData.innerHTML = `
-            <p><strong>Name - Email:</strong> ${response.data.title}</p>
-            <p><strong>Message: </strong> ${response.data.body}</p>
+            <p><hr><strong>Contact Details:<br></strong> ${response.data.title}</p>
+            <p><hr><strong>Message: </strong> ${response.data.body}</p>
             
             <hr>
         `;
